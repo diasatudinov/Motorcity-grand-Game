@@ -10,22 +10,9 @@
 		2B2F34DE2DE5C00300F20180 /* Motorcity grand Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Motorcity grand Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2B2F34F02DE5C01900F20180 /* Exceptions for "Motorcity grand Game" folder in "Motorcity grand Game" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Motorcity-grand-Game-Info.plist",
-			);
-			target = 2B2F34DD2DE5C00300F20180 /* Motorcity grand Game */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2B2F34E02DE5C00300F20180 /* Motorcity grand Game */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				2B2F34F02DE5C01900F20180 /* Exceptions for "Motorcity grand Game" folder in "Motorcity grand Game" target */,
-			);
 			path = "Motorcity grand Game";
 			sourceTree = "<group>";
 		};

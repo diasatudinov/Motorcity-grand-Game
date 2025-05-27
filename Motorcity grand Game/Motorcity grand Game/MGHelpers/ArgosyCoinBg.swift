@@ -4,13 +4,13 @@ struct ArgosyCoinBg: View {
     @StateObject var user = ArgosyUser.shared
     var body: some View {
         ZStack {
-            Image(.coinsBgArgosy)
+            Image(.coinsBgMG)
                 .resizable()
                 .scaledToFit()
             
             Text("\(user.money)")
-                .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black))
-                .foregroundStyle(.white)
+                .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 42:21, weight: .semibold))
+                .foregroundStyle(.yellow)
                 .textCase(.uppercase)
                 .offset(x: 20)
             

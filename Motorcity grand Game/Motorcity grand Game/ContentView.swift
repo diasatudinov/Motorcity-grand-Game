@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+    @StateObject private var viewModel = GameViewModel()
 
+       var body: some View {
+           ZStack {
+               // SpriteKit Game
+               GameView()
+                   .edgesIgnoringSafeArea(.all)
+
+               // Overlay SwiftUI карта
+               MapOverlay(cells: viewModel.cells)
+                   .allowsHitTesting(false)
+           }
+       }
+   }
 #Preview {
     ContentView()
 }
