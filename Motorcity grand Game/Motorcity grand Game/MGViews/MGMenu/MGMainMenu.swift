@@ -1,10 +1,3 @@
-//
-//  MGMainMenu.swift
-//  Motorcity grand Game
-//
-//  Created by Dias Atudinov on 27.05.2025.
-//
-
 import SwiftUI
 
 struct MGMainMenu: View {
