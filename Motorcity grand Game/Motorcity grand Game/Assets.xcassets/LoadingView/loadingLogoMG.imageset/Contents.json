@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "loadingLogoMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
