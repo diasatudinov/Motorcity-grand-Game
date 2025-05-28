@@ -3,11 +3,11 @@ import SwiftUI
 class ArgosyAchievementsViewModel: ObservableObject {
     
     @Published var achievements: [AchievementSG] = [
-        AchievementSG(image: "achi1IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
-        AchievementSG(image: "achi2IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
-        AchievementSG(image: "achi3IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
-        AchievementSG(image: "achi4IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
-        AchievementSG(image: "achi5IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false)
+        AchievementSG(image: "achieve1ImageMG", isAchieved: false),
+        AchievementSG(image: "achieve2ImageMG", isAchieved: false),
+        AchievementSG(image: "achieve3ImageMG", isAchieved: false),
+        AchievementSG(image: "achieve4ImageMG", isAchieved: false),
+        AchievementSG(image: "achieve5ImageMG", isAchieved: false)
 
     ] {
         didSet {
@@ -31,18 +31,6 @@ class ArgosyAchievementsViewModel: ObservableObject {
         
     }
     
-    func achieveCheck(_ achive: AchievementSG) {
-        guard let index = achievements.firstIndex(where: { $0.image == achive.image })
-        else {
-            return
-        }
-        
-        if achievements[index].achievedCount < achievements[index].achievedMaxCount {
-            achievements[index].achievedCount += 1
-        } else {
-            achievements[index].isAchieved = true
-        }
-    }
     
     func saveAchievementsItem() {
         if let encodedData = try? JSONEncoder().encode(achievements) {
@@ -64,7 +52,5 @@ class ArgosyAchievementsViewModel: ObservableObject {
 struct AchievementSG: Codable, Hashable, Identifiable {
     var id = UUID()
     var image: String
-    var achievedCount: Int
-    var achievedMaxCount: Int
     var isAchieved: Bool
 }
