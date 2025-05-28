@@ -1,29 +1,18 @@
 import SwiftUI
 
-enum ArgosyStoreSection: Codable, Hashable {
-    case backgrounds
-    case skin
-}
 
 class ArgosyShopViewModel: ObservableObject {
-    @Published var shopTeamItems: [Item] = [
+    @Published var shopBgItems: [Item] = [
         
-        Item(name: "bg1", image: "gameBg1Argosy", icon: "backIcon1Argosy", section: .backgrounds, price: 100),
-        Item(name: "bg2", image: "gameBg2Argosy", icon: "backIcon2Argosy", section: .backgrounds, price: 100),
-        Item(name: "bg3", image: "gameBg3Argosy", icon: "backIcon3Argosy", section: .backgrounds, price: 100),
-        Item(name: "bg4", image: "gameBg4Argosy", icon: "backIcon4Argosy", section: .backgrounds, price: 100),
+        Item(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
+        Item(name: "bg2", image: "gameRealBg2MG", icon: "gameBg2MG", price: 100),
+        Item(name: "bg3", image: "gameRealBg3MG", icon: "gameBg3MG", price: 100),
+        Item(name: "bg4", image: "gameRealBg4MG", icon: "gameBg4MG", price: 100),
         
-        
-        Item(name: "skin1", image: "imageSkin1Argosy", icon: "iconSkin1Argosy", section: .skin, price: 100),
-        Item(name: "skin2", image: "imageSkin2Argosy", icon: "iconSkin2Argosy", section: .skin, price: 100),
-        Item(name: "skin3", image: "imageSkin3Argosy", icon: "iconSkin3Argosy", section: .skin, price: 100),
-        Item(name: "skin4", image: "imageSkin4Argosy", icon: "iconSkin4Argosy", section: .skin, price: 100),
-         
     ]
     
     @Published var boughtItems: [Item] = [
-        Item(name: "bg1", image: "gameBg1Argosy", icon: "backIcon1Argosy", section: .backgrounds, price: 100),
-        Item(name: "skin1", image: "imageSkin1Argosy", icon: "iconSkin1Argosy", section: .skin, price: 100),
+        Item(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
     ] {
         didSet {
             saveBoughtItem()
@@ -36,21 +25,13 @@ class ArgosyShopViewModel: ObservableObject {
         }
     }
     
-    @Published var currentPersonItem: Item? {
-        didSet {
-            saveCurrentPerson()
-        }
-    }
-    
     init() {
         loadCurrentBg()
-        loadCurrentPerson()
         loadBoughtItem()
     }
     
-    private let userDefaultsBgKey = "bgKeyArgosy"
-    private let userDefaultsPersonKey = "skinsKeyArgosy"
-    private let userDefaultsBoughtKey = "boughtItemsArgosy"
+    private let userDefaultsBgKey = "bgKeyMG"
+    private let userDefaultsBoughtKey = "boughtItemsMG"
 
     
     func saveCurrentBg() {
@@ -66,25 +47,7 @@ class ArgosyShopViewModel: ObservableObject {
            let loadedItem = try? JSONDecoder().decode(Item.self, from: savedData) {
             currentBgItem = loadedItem
         } else {
-            currentBgItem = shopTeamItems[0]
-            print("No saved data found")
-        }
-    }
-    
-    func saveCurrentPerson() {
-        if let currentItem = currentPersonItem {
-            if let encodedData = try? JSONEncoder().encode(currentItem) {
-                UserDefaults.standard.set(encodedData, forKey: userDefaultsPersonKey)
-            }
-        }
-    }
-    
-    func loadCurrentPerson() {
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsPersonKey),
-           let loadedItem = try? JSONDecoder().decode(Item.self, from: savedData) {
-            currentPersonItem = loadedItem
-        } else {
-            currentPersonItem = shopTeamItems[4]
+            currentBgItem = shopBgItems[0]
             print("No saved data found")
         }
     }
@@ -112,6 +75,5 @@ struct Item: Codable, Hashable {
     var name: String
     var image: String
     var icon: String
-    var section: ArgosyStoreSection
     var price: Int
 }
