@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "cardFace3MG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

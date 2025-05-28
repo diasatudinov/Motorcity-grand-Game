@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "man2ImageMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
