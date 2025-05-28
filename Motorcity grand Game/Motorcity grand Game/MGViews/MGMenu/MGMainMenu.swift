@@ -9,9 +9,9 @@ struct MGMainMenu: View {
     @State private var showCalendar = false
 
     
-//    @StateObject var achievementVM = ArgosyAchievementsViewModel()
-//    @StateObject var settingsVM = ArgosySettingsViewModel()
-//    @StateObject var shopVM = ArgosyShopViewModel()
+    @StateObject var achievementVM = ArgosyAchievementsViewModel()
+    @StateObject var settingsVM = ArgosySettingsViewModel()
+    @StateObject var shopVM = ArgosyShopViewModel()
     
     var body: some View {
         
@@ -120,16 +120,19 @@ struct MGMainMenu: View {
 //            ArgosyChooseLevelView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
-           // ArgosyChooseMiniGame()
+            MGMiniGameChooseView()
         }
         .fullScreenCover(isPresented: $showAchievement) {
-           // ArgosyAchievementsView(viewModel: achievementVM)
+            MGAchievementsView(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
-          //  ArgosyShopView(viewModel: shopVM)
+            MGShopView(viewModel: shopVM)
         }
         .fullScreenCover(isPresented: $showSettings) {
-           // ArgosySettingsView(settingsVM: settingsVM)
+            MGSettingsView(settingsVM: settingsVM)
+        }
+        .fullScreenCover(isPresented: $showCalendar) {
+            MGDailyTaskView()
         }
         
         

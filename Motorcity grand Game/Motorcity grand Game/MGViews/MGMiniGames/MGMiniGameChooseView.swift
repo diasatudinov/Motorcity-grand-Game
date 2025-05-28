@@ -95,16 +95,17 @@ struct MGMiniGameChooseView: View {
             }
         )
         .fullScreenCover(isPresented: $game1) {
-            //ArgosyNumberGuessGame()
+            MGGuessNumberView()
         }
         .fullScreenCover(isPresented: $game2) {
-            //ArgosyCoupleGameView()
+            MGFindSequenceView()
         }
         .fullScreenCover(isPresented: $game3) {
-           // ArgosyMemorizationView()
+            //  ArgosyMazeGameView()
         }
         .fullScreenCover(isPresented: $game4) {
-          //  ArgosyMazeGameView()
+            MGMatchTheCardView()
+          
         }
     }
 }
