@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "winTwentyMG.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
