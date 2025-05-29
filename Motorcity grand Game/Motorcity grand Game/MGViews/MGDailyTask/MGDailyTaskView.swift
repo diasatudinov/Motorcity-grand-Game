@@ -34,6 +34,8 @@ struct MGDailyTaskView: View {
                     }.padding(.top)
                 }
                 
+                Spacer()
+                
                 HStack {
                     
                     ZStack {
@@ -54,7 +56,7 @@ struct MGDailyTaskView: View {
                             }
                         }
                         
-                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:250)
+                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
                     
                     ZStack {
                         Image(.task2ImageMG)
@@ -74,7 +76,7 @@ struct MGDailyTaskView: View {
                             }
                         }
                         
-                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:250)
+                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
                     
                     ZStack {
                         Image(.task3ImageMG)
@@ -94,9 +96,10 @@ struct MGDailyTaskView: View {
                             }
                         }
                         
-                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:250)
+                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
                 }.offset(y: -25)
                 
+                Spacer()
                 
             }
             

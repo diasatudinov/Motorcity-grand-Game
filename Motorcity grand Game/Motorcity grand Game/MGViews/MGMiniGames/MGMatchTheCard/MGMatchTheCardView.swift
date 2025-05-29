@@ -1,10 +1,3 @@
-//
-//  MGMatchTheCardView.swift
-//  Motorcity grand Game
-//
-//  Created by Dias Atudinov on 28.05.2025.
-//
-
 import SwiftUI
 
 struct MGMatchTheCardView: View {
@@ -120,7 +113,7 @@ struct MGMatchTheCardView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
-                            
+                            Spacer()
                             Button {
                                 setupGame()
                             } label: {

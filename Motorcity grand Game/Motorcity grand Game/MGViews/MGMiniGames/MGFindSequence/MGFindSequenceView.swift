@@ -1,10 +1,3 @@
-//
-//  MGFindSequenceView.swift
-//  Motorcity grand Game
-//
-//  Created by Dias Atudinov on 28.05.2025.
-//
-
 import SwiftUI
 
 struct MGFindSequenceView: View {

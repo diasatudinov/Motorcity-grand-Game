@@ -1,10 +1,3 @@
-//
-//  MGGuessNumberView.swift
-//  Motorcity grand Game
-//
-//  Created by Dias Atudinov on 28.05.2025.
-//
-
 import SwiftUI
 
 struct MGGuessNumberView: View {
@@ -52,7 +45,7 @@ struct MGGuessNumberView: View {
                                 }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:255)
                                 
                                 let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
-                                HStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 24:12) {
+                                HStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 12:12) {
                                     ForEach(padNumbers, id: \ .self) { num in
                                         Button(action: { numberPressed(num) }) {
                                             ZStack {
@@ -60,9 +53,9 @@ struct MGGuessNumberView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                 Text("\(num)")
-                                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 72:36, weight: .bold))
+                                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 50:36, weight: .bold))
                                                     .foregroundColor(.yellow)
-                                            }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 144:72, height: ArgosyDeviceManager.shared.deviceType == .pad ? 144:72)
+                                            }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 100:72, height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:72)
                                         }
                                         .disabled(guessDigits.count >= 3)
                                     }

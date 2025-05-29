@@ -1,10 +1,3 @@
-//
-//  MGMiniGameChooseView.swift
-//  Motorcity grand Game
-//
-//  Created by Dias Atudinov on 28.05.2025.
-//
-
 import SwiftUI
 
 struct MGMiniGameChooseView: View {
@@ -101,11 +94,11 @@ struct MGMiniGameChooseView: View {
             MGFindSequenceView()
         }
         .fullScreenCover(isPresented: $game3) {
-            //  ArgosyMazeGameView()
+            ArgosyMazeGameView()
         }
         .fullScreenCover(isPresented: $game4) {
             MGMatchTheCardView()
-          
+            
         }
     }
 }
