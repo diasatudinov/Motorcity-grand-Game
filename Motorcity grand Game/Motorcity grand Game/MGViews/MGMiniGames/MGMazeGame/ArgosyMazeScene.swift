@@ -31,14 +31,14 @@ class ArgosyMazeScene: SKScene {
     private func layoutMazeArea() {
         let gridRows = maze.count
         let gridCols = maze[0].count
-        let maxSide = min(size.width, size.height * 0.5)
+        let maxSide = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height * 0.5)
         let cellSide = maxSide / CGFloat(gridCols)
         tileSize = CGSize(width: cellSide, height: cellSide)
 
 
         let totalWidth = CGFloat(gridCols) * cellSide
-        let originX = (size.width - totalWidth) / 2
-        let originY = size.height * 0.25
+        let originX = (UIScreen.main.bounds.width - totalWidth) * 0.40
+        let originY = UIScreen.main.bounds.height * 0.15
         mazeOrigin = CGPoint(x: originX, y: originY)
     }
 
@@ -73,7 +73,7 @@ class ArgosyMazeScene: SKScene {
             for c in 0..<gridCols where maze[r][c] == 1 {
                 let x = mazeOrigin.x + CGFloat(c) * tileSize.width + tileSize.width/2
                 let y = mazeOrigin.y + CGFloat(gridRows - r - 1) * tileSize.height + tileSize.height/2
-                let wall = SKSpriteNode(color: .appYellow, size: wallSize)
+                let wall = SKSpriteNode(color: .white, size: wallSize)
                 wall.position = CGPoint(x: x, y: y)
                 addChild(wall)
             }
