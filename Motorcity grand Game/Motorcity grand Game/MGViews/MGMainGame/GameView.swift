@@ -209,5 +209,5 @@ struct ArgosyGameView: View {
 }
 
 #Preview {
-    ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 1)
+    ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 0)
 }

@@ -2,20 +2,20 @@ import SpriteKit
 import GameplayKit
 import SwiftUI
 
-let positions: [CGPoint] = [
-    CGPoint(x: 530, y: 210),
-    CGPoint(x: 290, y: 165),
-    CGPoint(x: 320, y: 330),
-    CGPoint(x: 475, y: 345),
-    CGPoint(x: 410, y: 322),
-    CGPoint(x: 406, y: 240),
-    CGPoint(x: 478, y: 260),
-    CGPoint(x: 525, y: 140)
-
-]
+//let positions: [CGPoint] = [
+//    CGPoint(x: 530, y: 210),
+//    CGPoint(x: 290, y: 165),
+//    CGPoint(x: 320, y: 330),
+//    CGPoint(x: 475, y: 345),
+//    CGPoint(x: 410, y: 322),
+//    CGPoint(x: 406, y: 240),
+//    CGPoint(x: 478, y: 260),
+//    CGPoint(x: 525, y: 140),
+//    CGPoint(x: 380, y: 120)
+//]
 
 #Preview {
-    ContentView()
+    ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 3)
 }
 
 class GameScene: SKScene {
@@ -38,34 +38,455 @@ class GameScene: SKScene {
 
     private func setupPlayers() {
         let human = Player(name: "Player", isHuman: true, color: .blue)
-        let bot   = Player(name: "Bot",    isHuman: false, color: .red)
+        let bot   = Player(name: "Bot", isHuman: false, color: .red)
         players = [human, bot]
     }
 
     private func setupMap() {
-        let textures = (0..<8).map { SKTexture(imageNamed: "mask\($0)") }
-        let positions: [CGPoint] = [
-            CGPoint(x: 530, y: 210),
-            CGPoint(x: 290, y: 165),
-            CGPoint(x: 320, y: 330),
-            CGPoint(x: 475, y: 345),
-            CGPoint(x: 410, y: 322),
-            CGPoint(x: 406, y: 240),
-            CGPoint(x: 478, y: 260),
-            CGPoint(x: 525, y: 140)
-        ]
-        let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 6)
+        var positions: [CGPoint] = []
+        if let index = levelIndex {
+           
+            switch index {
+            case 0:
+                let textures = (0..<9).map { SKTexture(imageNamed: "mask\(index)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 780, y: 310),
+                        CGPoint(x: 390, y: 255),
+                        CGPoint(x: 440, y: 560),
+                        CGPoint(x: 740, y: 575),
+                        CGPoint(x: 605, y: 545),
+                        CGPoint(x: 605, y: 395),
+                        CGPoint(x: 748, y: 425),
+                        CGPoint(x: 790, y: 160),
+                        CGPoint(x: 560, y: 160)
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 530, y: 210),
+                        CGPoint(x: 290, y: 165),
+                        CGPoint(x: 320, y: 330),
+                        CGPoint(x: 475, y: 345),
+                        CGPoint(x: 410, y: 322),
+                        CGPoint(x: 406, y: 240),
+                        CGPoint(x: 478, y: 260),
+                        CGPoint(x: 525, y: 140),
+                        CGPoint(x: 380, y: 120)
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
 
-        for i in 0..<textures.count {
-            let node = TerritoryNode(
-                id: i,
-                texture: textures[i],
-                position: positions[i],
-                owner: owners[i]
-            )
-            addChild(node)
-            cells.append(node)
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+            case 1:
+                let textures = (0..<9).map { SKTexture(imageNamed: "mask\(index)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 650, y: 210),
+                        CGPoint(x: 743, y: 209),
+                        CGPoint(x: 563, y: 230),
+                        CGPoint(x: 406, y: 262),
+                        CGPoint(x: 465, y: 232),
+                        CGPoint(x: 440, y: 355),
+                        CGPoint(x: 639, y: 305),
+                        CGPoint(x: 749, y: 308),
+                        CGPoint(x: 512, y: 323)
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 450, y: 120),
+                        CGPoint(x: 497, y: 120),
+                        CGPoint(x: 405, y: 130),
+                        CGPoint(x: 327, y: 148),
+                        CGPoint(x: 356, y: 132),
+                        CGPoint(x: 345, y: 195),
+                        CGPoint(x: 445, y: 168),
+                        CGPoint(x: 500, y: 170),
+                        CGPoint(x: 382, y: 178)
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+            case 2:
+                let textures = (0..<7).map { SKTexture(imageNamed: "mask\(index)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 600, y: 320),
+                        CGPoint(x: 561, y: 424),
+                        CGPoint(x: 828, y: 383),
+                        CGPoint(x: 569, y: 549),
+                        CGPoint(x: 693, y: 305),
+                        CGPoint(x: 734, y: 446),
+                        CGPoint(x: 433, y: 232),
+                        
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 450, y: 170),
+                        CGPoint(x: 430, y: 223),
+                        CGPoint(x: 565, y: 203),
+                        CGPoint(x: 434, y: 286),
+                        CGPoint(x: 497, y: 162),
+                        CGPoint(x: 516, y: 234),
+                        CGPoint(x: 366, y: 127),
+                        
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 5)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+            case 3:
+                let textures = (0..<5).map { SKTexture(imageNamed: "mask\(index)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 750, y: 320),
+                        CGPoint(x: 715, y: 468),
+                        CGPoint(x: 495, y: 218),
+                        CGPoint(x: 642, y: 234),
+                        CGPoint(x: 479, y: 512),
+                        
+                        
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 500, y: 170),
+                        CGPoint(x: 485, y: 245),
+                        CGPoint(x: 375, y: 120),
+                        CGPoint(x: 449, y: 128),
+                        CGPoint(x: 366, y: 268),
+                        
+                        
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+            case 4:
+                let textures = (0..<9).map { SKTexture(imageNamed: "mask\(1)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 650, y: 210),
+                        CGPoint(x: 743, y: 209),
+                        CGPoint(x: 563, y: 230),
+                        CGPoint(x: 406, y: 262),
+                        CGPoint(x: 465, y: 232),
+                        CGPoint(x: 440, y: 355),
+                        CGPoint(x: 639, y: 305),
+                        CGPoint(x: 749, y: 308),
+                        CGPoint(x: 512, y: 323)
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 450, y: 120),
+                        CGPoint(x: 497, y: 120),
+                        CGPoint(x: 405, y: 130),
+                        CGPoint(x: 327, y: 148),
+                        CGPoint(x: 356, y: 132),
+                        CGPoint(x: 345, y: 195),
+                        CGPoint(x: 445, y: 168),
+                        CGPoint(x: 500, y: 170),
+                        CGPoint(x: 382, y: 178)
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+            case 5:
+                
+                let textures = (0..<5).map { SKTexture(imageNamed: "mask\(3)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 750, y: 320),
+                        CGPoint(x: 715, y: 468),
+                        CGPoint(x: 495, y: 218),
+                        CGPoint(x: 642, y: 234),
+                        CGPoint(x: 479, y: 512),
+                        
+                        
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 500, y: 170),
+                        CGPoint(x: 485, y: 245),
+                        CGPoint(x: 375, y: 120),
+                        CGPoint(x: 449, y: 128),
+                        CGPoint(x: 366, y: 268),
+                        
+                        
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+            case 6:
+                
+                let textures = (0..<9).map { SKTexture(imageNamed: "mask\(1)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 650, y: 210),
+                        CGPoint(x: 743, y: 209),
+                        CGPoint(x: 563, y: 230),
+                        CGPoint(x: 406, y: 262),
+                        CGPoint(x: 465, y: 232),
+                        CGPoint(x: 440, y: 355),
+                        CGPoint(x: 639, y: 305),
+                        CGPoint(x: 749, y: 308),
+                        CGPoint(x: 512, y: 323)
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 450, y: 120),
+                        CGPoint(x: 497, y: 120),
+                        CGPoint(x: 405, y: 130),
+                        CGPoint(x: 327, y: 148),
+                        CGPoint(x: 356, y: 132),
+                        CGPoint(x: 345, y: 195),
+                        CGPoint(x: 445, y: 168),
+                        CGPoint(x: 500, y: 170),
+                        CGPoint(x: 382, y: 178)
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+                
+            case 7:
+                
+                let textures = (0..<9).map { SKTexture(imageNamed: "mask\(0)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 780, y: 310),
+                        CGPoint(x: 390, y: 255),
+                        CGPoint(x: 440, y: 560),
+                        CGPoint(x: 740, y: 575),
+                        CGPoint(x: 605, y: 545),
+                        CGPoint(x: 605, y: 395),
+                        CGPoint(x: 748, y: 425),
+                        CGPoint(x: 790, y: 160),
+                        CGPoint(x: 560, y: 160)
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 530, y: 210),
+                        CGPoint(x: 290, y: 165),
+                        CGPoint(x: 320, y: 330),
+                        CGPoint(x: 475, y: 345),
+                        CGPoint(x: 410, y: 322),
+                        CGPoint(x: 406, y: 240),
+                        CGPoint(x: 478, y: 260),
+                        CGPoint(x: 525, y: 140),
+                        CGPoint(x: 380, y: 120)
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+            case 8:
+                
+                let textures = (0..<5).map { SKTexture(imageNamed: "mask\(3)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 750, y: 320),
+                        CGPoint(x: 715, y: 468),
+                        CGPoint(x: 495, y: 218),
+                        CGPoint(x: 642, y: 234),
+                        CGPoint(x: 479, y: 512),
+                        
+                        
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 500, y: 170),
+                        CGPoint(x: 485, y: 245),
+                        CGPoint(x: 375, y: 120),
+                        CGPoint(x: 449, y: 128),
+                        CGPoint(x: 366, y: 268),
+                        
+                        
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+            case 9:
+                
+                let textures = (0..<5).map { SKTexture(imageNamed: "mask\(3)\($0)") }
+                
+                if ArgosyDeviceManager.shared.deviceType == .pad {
+                    positions = [
+                        CGPoint(x: 750, y: 320),
+                        CGPoint(x: 715, y: 468),
+                        CGPoint(x: 495, y: 218),
+                        CGPoint(x: 642, y: 234),
+                        CGPoint(x: 479, y: 512),
+                        
+                        
+                    ]
+                } else {
+                    positions = [
+                        CGPoint(x: 500, y: 170),
+                        CGPoint(x: 485, y: 245),
+                        CGPoint(x: 375, y: 120),
+                        CGPoint(x: 449, y: 128),
+                        CGPoint(x: 366, y: 268),
+                        
+                        
+                    ]
+                }
+                
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+                
+            default:
+                
+                let textures = (0..<9).map { SKTexture(imageNamed: "mask\(index)\($0)") }
+                
+                positions = [
+                    CGPoint(x: 530, y: 210),
+                    CGPoint(x: 290, y: 165),
+                    CGPoint(x: 320, y: 330),
+                    CGPoint(x: 475, y: 345),
+                    CGPoint(x: 410, y: 322),
+                    CGPoint(x: 406, y: 240),
+                    CGPoint(x: 478, y: 260),
+                    CGPoint(x: 525, y: 140),
+                    CGPoint(x: 380, y: 120)
+                ]
+                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 5)
+
+                for i in 0..<textures.count {
+                    let node = TerritoryNode(
+                        id: i,
+                        texture: textures[i],
+                        position: positions[i],
+                        owner: owners[i]
+                    )
+                    addChild(node)
+                    cells.append(node)
+                }
+            }
+            
+           
         }
+        
+        
+        
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -186,7 +607,7 @@ class TerritoryNode: SKNode {
         self.position = position
 
         shape.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        shape.setScale(0.5)
+        shape.setScale(ArgosyDeviceManager.shared.deviceType == .pad ? 1:0.5)
         shape.zPosition = 0
         addChild(shape)
 
@@ -214,7 +635,12 @@ class TerritoryNode: SKNode {
     }
 
     func setHighlight(_ on: Bool) {
-        shape.run(.scale(to: on ? 0.6 : 0.5, duration: 0.1))
+        if ArgosyDeviceManager.shared.deviceType == .pad {
+            shape.run(.scale(to: on ? 1.1 : 1, duration: 0.1))
+        } else {
+            shape.run(.scale(to: on ? 0.6 : 0.5, duration: 0.1))
+        }
+        
     }
 
     func sendSoldiers(to target: TerritoryNode, sendPercentage: CGFloat) {

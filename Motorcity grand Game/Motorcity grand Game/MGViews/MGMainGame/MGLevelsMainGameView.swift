@@ -62,7 +62,7 @@ struct MGLevelsMainGameView: View {
                                     
                                 }
                             }
-                        }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 500:610)
+                        }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 720:610)
                         
                     }
                     Spacer()
