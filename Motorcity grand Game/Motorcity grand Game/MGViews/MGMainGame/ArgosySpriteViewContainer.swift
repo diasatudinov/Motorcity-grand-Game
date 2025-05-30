@@ -4,22 +4,23 @@ import SpriteKit
 
 struct ArgosySpriteViewContainer: UIViewRepresentable {
     @StateObject var user = ArgosyUser.shared
-    var scene: ArgosyGameScene
-    @Binding var isWin: Bool
-    @Binding var score: Int
+    var scene: GameScene
+    @Binding var winner: String?
+    @Binding var sendPercent: CGFloat
     var level: Int
+    
     func makeUIView(context: Context) -> SKView {
         let skView = SKView(frame: UIScreen.main.bounds)
         skView.backgroundColor = .clear
         scene.scaleMode = .resizeFill
-        scene.winHandle = {
-            isWin = true
-            user.updateUserMoney(for: 100)
+        scene.victoryHandler = { name in
+            DispatchQueue.main.async {
+                self.winner = name
+            }
         }
         scene.levelIndex = level
-        scene.scoreHandle = {
-            score += 100
-        }
+        scene.sendPercent = sendPercent
+       
         skView.presentScene(scene)
         
         return skView
