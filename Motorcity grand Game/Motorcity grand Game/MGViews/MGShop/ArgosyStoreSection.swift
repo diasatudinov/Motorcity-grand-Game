@@ -30,8 +30,8 @@ class ArgosyShopViewModel: ObservableObject {
         loadBoughtItem()
     }
     
-    private let userDefaultsBgKey = "bgKeyMG"
-    private let userDefaultsBoughtKey = "boughtItemsMG"
+    private let userDefaultsBgKey = "backgroundKeyMG"
+    private let userDefaultsBoughtKey = "boughtShopItemsMG"
 
     
     func saveCurrentBg() {

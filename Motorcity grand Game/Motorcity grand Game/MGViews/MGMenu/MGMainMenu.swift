@@ -117,7 +117,7 @@ struct MGMainMenu: View {
             }
         )
         .fullScreenCover(isPresented: $showGame) {
-//            ArgosyChooseLevelView(shopVM: shopVM)
+            MGLevelsMainGameView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
             MGMiniGameChooseView()
