@@ -1,15 +1,15 @@
 import SwiftUI
 import SpriteKit
 
-struct ArgosyGameView: View {
+struct MGGameView: View {
     @Environment(\.presentationMode) var presentationMode
    
-    @State var gameScene: GameScene = {
-        let scene = GameScene(size: UIScreen.main.bounds.size)
+    @State var gameScene: MGGameScene = {
+        let scene = MGGameScene(size: UIScreen.main.bounds.size)
         scene.scaleMode = .resizeFill
         return scene
     }()
-    @ObservedObject var shopVM: ArgosyShopViewModel
+    @ObservedObject var shopVM: MGShopViewModel
     @State private var powerUse = false
     @State private var isWin = false
     @State private var winner: String? = nil
@@ -18,7 +18,7 @@ struct ArgosyGameView: View {
     @State var level: Int
     var body: some View {
         ZStack {
-            ArgosySpriteViewContainer(scene: gameScene, winner: $winner, sendPercent: $sendPercentage, level: level)
+            MGSpriteViewContainer(scene: gameScene, winner: $winner, sendPercent: $sendPercentage, level: level)
                 .ignoresSafeArea()
             
             VStack {
@@ -31,7 +31,7 @@ struct ArgosyGameView: View {
                             Image(.backIconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                         
@@ -47,7 +47,7 @@ struct ArgosyGameView: View {
                     Image(.stickBgMG)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250)
+                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 500:250)
                     
                     VStack(spacing: 12) {
                         
@@ -58,10 +58,10 @@ struct ArgosyGameView: View {
                                 Image(.persentBgMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("Max")
-                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.yellow)
                             }
                         }
@@ -73,10 +73,10 @@ struct ArgosyGameView: View {
                                 Image(.persentBgMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("75%")
-                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.yellow)
                             }
                         }
@@ -88,10 +88,10 @@ struct ArgosyGameView: View {
                                 Image(.persentBgMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("50%")
-                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.yellow)
                             }
                         }
@@ -103,10 +103,10 @@ struct ArgosyGameView: View {
                                 Image(.persentBgMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:80)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:80)
                                 
                                 Text("25%")
-                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
+                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 35:20, weight: .semibold))
                                     .foregroundStyle(.yellow)
                             }
                         }
@@ -116,7 +116,7 @@ struct ArgosyGameView: View {
                         
                     }
                     
-                }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 600:300)
+                }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 600:300)
             }
             
 
@@ -136,22 +136,22 @@ struct ArgosyGameView: View {
                                 Image(.winTextMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
                                 
                                 Image(.priceFiftyMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 
                                 Button {
                                     gameScene.restartGame()
                                     self.winner = nil
-                                    ArgosyUser.shared.updateUserMoney(for: 50)
+                                    MGUser.shared.updateUserMoney(for: 50)
                                 } label: {
                                     Image(.takeTextMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
                             }
@@ -171,7 +171,7 @@ struct ArgosyGameView: View {
                                 Image(.youLoseTextMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:120)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 200:120)
                                
                                 
                                 Button {
@@ -181,7 +181,7 @@ struct ArgosyGameView: View {
                                     Image(.retreTextMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                                 
                             }
@@ -209,5 +209,5 @@ struct ArgosyGameView: View {
 }
 
 #Preview {
-    ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 0)
+    MGGameView(shopVM: MGShopViewModel(), level: 0)
 }

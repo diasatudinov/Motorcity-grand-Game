@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MGLevelsMainGameView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var shopVM: ArgosyShopViewModel
+    @ObservedObject var shopVM: MGShopViewModel
 
     @State var openGame = false
     @State var selectedIndex = 0
@@ -17,7 +17,7 @@ struct MGLevelsMainGameView: View {
                             Image(.levelsTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                         }
                         HStack(alignment: .top) {
                             Button {
@@ -27,10 +27,10 @@ struct MGLevelsMainGameView: View {
                                 Image(.backIconMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             Spacer()
-                            ArgosyCoinBg()
+                            MGCoinBg()
                         }.padding([.horizontal, .top])
                         
                     }
@@ -48,10 +48,10 @@ struct MGLevelsMainGameView: View {
                                     Image(.levelNumBgMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:120)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 150:120)
                                     
                                     Text("\(index + 1)")
-                                        .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 80:40, weight: .semibold))
+                                        .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 80:40, weight: .semibold))
                                         .foregroundStyle(.yellow)
                                 }
                                 .onTapGesture {
@@ -62,7 +62,7 @@ struct MGLevelsMainGameView: View {
                                     
                                 }
                             }
-                        }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 720:610)
+                        }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 720:610)
                         
                     }
                     Spacer()
@@ -78,18 +78,18 @@ struct MGLevelsMainGameView: View {
                             Image(.homeIconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                         Image(.tutorialLoader1MG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 50:25)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 50:25)
                         Spacer()
                         Image(.homeIconMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             .opacity(0)
                     }.padding([.horizontal, .top])
                     Spacer()
@@ -101,37 +101,37 @@ struct MGLevelsMainGameView: View {
                                 Image(.tutorialInfo1MG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             case 1:
                                 Image(.tutorialInfo2MG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             case 2:
                                 Image(.tutorialInfo3MG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             case 3:
                                 Image(.tutorialInfo4MG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             case 4:
                                 Image(.tutorialInfo5MG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             case 5:
                                 Image(.tutorialInfo6MG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             case 6:
                                 Image(.tutorialInfo7MG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             default:
                                 Text("")
                             }
@@ -151,12 +151,12 @@ struct MGLevelsMainGameView: View {
                                     Image(.okTextMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:60)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:60)
                                 } else {
                                     Image(.tutorialNextTextMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:60)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:60)
                                     
                                 }
                             }
@@ -167,38 +167,38 @@ struct MGLevelsMainGameView: View {
                             Image(.tutorialMap1MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                             
                         case 1:
                             Image(.tutorialMap2MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                         case 2:
                             Image(.tutorialMap2MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                         case 3:
                             Image(.tutorialMap3MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                         case 4:
                             Image(.tutorialMap4MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                         case 5:
                             Image(.tutorialMap4MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                         case 6:
                             Image(.tutorialMap4MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                         default:
                             Text("")
                         }
@@ -208,7 +208,7 @@ struct MGLevelsMainGameView: View {
                         Image(.tutorialScale1MG)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200,height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                            .frame(width: MGDeviceManager.shared.deviceType == .pad ? 400:200,height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                         
                     }
                     
@@ -224,12 +224,12 @@ struct MGLevelsMainGameView: View {
             }
         )
         .fullScreenCover(isPresented: $openGame) {
-             ArgosyGameView(shopVM: shopVM, level: selectedIndex)
+             MGGameView(shopVM: shopVM, level: selectedIndex)
         }
     }
 
 }
 
 #Preview {
-    MGLevelsMainGameView(shopVM: ArgosyShopViewModel())
+    MGLevelsMainGameView(shopVM: MGShopViewModel())
 }

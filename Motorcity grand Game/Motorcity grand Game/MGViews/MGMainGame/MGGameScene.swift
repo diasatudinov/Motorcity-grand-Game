@@ -2,29 +2,13 @@ import SpriteKit
 import GameplayKit
 import SwiftUI
 
-//let positions: [CGPoint] = [
-//    CGPoint(x: 530, y: 210),
-//    CGPoint(x: 290, y: 165),
-//    CGPoint(x: 320, y: 330),
-//    CGPoint(x: 475, y: 345),
-//    CGPoint(x: 410, y: 322),
-//    CGPoint(x: 406, y: 240),
-//    CGPoint(x: 478, y: 260),
-//    CGPoint(x: 525, y: 140),
-//    CGPoint(x: 380, y: 120)
-//]
-
-#Preview {
-    ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 3)
-}
-
 class MGGameScene: SKScene {
     var victoryHandler: ((String) -> Void)?
     var sendPercent: CGFloat?
     var levelIndex: Int?
-    private var cells: [TerritoryNode] = []
-    private var players: [Player] = []
-    private var selectedCell: TerritoryNode?
+    private var cells: [MGTerritoryNode] = []
+    private var players: [MGPlayer] = []
+    private var selectedCell: MGTerritoryNode?
     private var lastUpdateTime: TimeInterval = 0
 
     override func didMove(to view: SKView) {
@@ -37,8 +21,8 @@ class MGGameScene: SKScene {
     }
 
     private func setupPlayers() {
-        let human = Player(name: "Player", isHuman: true, color: .blue)
-        let bot   = Player(name: "Bot", isHuman: false, color: .red)
+        let human = MGPlayer(name: "Player", isHuman: true, color: .blue)
+        let bot   = MGPlayer(name: "Bot", isHuman: false, color: .red)
         players = [human, bot]
     }
 
@@ -76,10 +60,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -118,10 +102,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -158,10 +142,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 5)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 5)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -196,10 +180,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -238,10 +222,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -276,10 +260,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -319,10 +303,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -363,10 +347,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 7)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -402,10 +386,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -440,10 +424,10 @@ class MGGameScene: SKScene {
                     ]
                 }
                 
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 3)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -468,10 +452,10 @@ class MGGameScene: SKScene {
                     CGPoint(x: 525, y: 140),
                     CGPoint(x: 380, y: 120)
                 ]
-                let owners: [Player?] = [players[0], players[1]] + Array(repeating: nil, count: 5)
+                let owners: [MGPlayer?] = [players[0], players[1]] + Array(repeating: nil, count: 5)
 
                 for i in 0..<textures.count {
-                    let node = TerritoryNode(
+                    let node = MGTerritoryNode(
                         id: i,
                         texture: textures[i],
                         position: positions[i],
@@ -582,12 +566,12 @@ class MGGameScene: SKScene {
     }
 }
 
-class TerritoryNode: SKNode {
+class MGTerritoryNode: SKNode {
     let id: Int
     let shape: SKSpriteNode
     private let tower: SKSpriteNode
     private let label: SKLabelNode
-    weak var owner: Player? {
+    weak var owner: MGPlayer? {
         didSet { updateAppearance() }
     }
     var soldierCount: Int = 10 {
@@ -595,7 +579,7 @@ class TerritoryNode: SKNode {
     }
     private var growthTime: TimeInterval = 0
 
-    init(id: Int, texture: SKTexture, position: CGPoint, owner: Player?) {
+    init(id: Int, texture: SKTexture, position: CGPoint, owner: MGPlayer?) {
         self.id = id
         self.shape = SKSpriteNode(texture: texture)
         // Initialize tower with appropriate icon
@@ -643,7 +627,7 @@ class TerritoryNode: SKNode {
         
     }
 
-    func sendSoldiers(to target: TerritoryNode, sendPercentage: CGFloat) {
+    func sendSoldiers(to target: MGTerritoryNode, sendPercentage: CGFloat) {
         let countToSend = Int(CGFloat(soldierCount) * sendPercentage)
         let sending = max(1, min(soldierCount, countToSend))
         guard sending > 0, let attacker = owner, let scene = scene else { return }
@@ -652,7 +636,7 @@ class TerritoryNode: SKNode {
         let start = convert(tower.position, to: scene)
         let end = target.convert(target.tower.position, to: scene)
         for i in 0..<sending {
-            let s = SoldierNode(color: attacker.color)
+            let s = MGSoldierNode(color: attacker.color)
             let col = i % 4
             let row = i / 4
             let spacing: CGFloat = 12
@@ -669,7 +653,7 @@ class TerritoryNode: SKNode {
         }
     }
 
-    func receiveSoldier(from attacker: Player) {
+    func receiveSoldier(from attacker: MGPlayer) {
         if owner === attacker {
             soldierCount += 1
         } else {
@@ -709,7 +693,7 @@ class TerritoryNode: SKNode {
     }
 }
 
-class SoldierNode: SKShapeNode {
+class MGSoldierNode: SKShapeNode {
     init(color: UIColor) {
         super.init()
         let size: CGFloat = 8
@@ -739,13 +723,13 @@ class SoldierNode: SKShapeNode {
         }
 }
 
-class Player: Hashable {
+class MGPlayer: Hashable {
     let name: String
     let isHuman: Bool
     let color: UIColor
     init(name: String, isHuman: Bool, color: UIColor) {
         self.name = name; self.isHuman = isHuman; self.color = color
     }
-    static func == (l: Player, r: Player) -> Bool { l === r }
+    static func == (l: MGPlayer, r: MGPlayer) -> Bool { l === r }
     func hash(into hasher: inout Hasher) { hasher.combine(ObjectIdentifier(self)) }
 }

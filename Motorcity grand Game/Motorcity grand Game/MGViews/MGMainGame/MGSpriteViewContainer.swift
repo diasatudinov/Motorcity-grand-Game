@@ -4,7 +4,7 @@ import SpriteKit
 
 struct MGSpriteViewContainer: UIViewRepresentable {
     @StateObject var user = MGUser.shared
-    var scene: GameScene
+    var scene: MGGameScene
     @Binding var winner: String?
     @Binding var sendPercent: CGFloat
     var level: Int
