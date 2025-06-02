@@ -3,7 +3,7 @@ import SwiftUI
 struct MGSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var settingsVM: ArgosySettingsViewModel
+    @ObservedObject var settingsVM: MGSettingsViewModel
     var body: some View {
         ZStack {
             
@@ -18,18 +18,18 @@ struct MGSettingsView: View {
                                 Image(.backIconMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
-                            ArgosyCoinBg().opacity(0)
+                            MGCoinBg().opacity(0)
                         }
                         Spacer()
                         Image(.settingsTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
                         Spacer()
-                        ArgosyCoinBg()
+                        MGCoinBg()
                     }.padding([.top])
                 }
                 
@@ -41,7 +41,7 @@ struct MGSettingsView: View {
                         Image(.soundTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                         
                         
                         HStack {
@@ -55,13 +55,13 @@ struct MGSettingsView: View {
                                 Image(.arrowLeftMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                             }
                             
                             Image(settingsVM.soundEnabled ? .onMG:.offMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: ArgosyDeviceManager.shared.deviceType == .pad ? 140:70)
+                                .frame(width: MGDeviceManager.shared.deviceType == .pad ? 200:100, height: MGDeviceManager.shared.deviceType == .pad ? 140:70)
                             
                             Button {
                                 withAnimation {
@@ -72,7 +72,7 @@ struct MGSettingsView: View {
                                 Image(.arrowLeftMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                                     .scaleEffect(x: -1, y: 1)
                             }
                             
@@ -87,7 +87,7 @@ struct MGSettingsView: View {
                         Image(.languageTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                         
                         
                         HStack {
@@ -97,20 +97,20 @@ struct MGSettingsView: View {
                             Image(.arrowLeftMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                             
                             
                             Image(.flag1MG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: ArgosyDeviceManager.shared.deviceType == .pad ? 140:70)
+                                .frame(width: MGDeviceManager.shared.deviceType == .pad ? 200:100, height: MGDeviceManager.shared.deviceType == .pad ? 140:70)
                             
                             
                             
                             Image(.arrowLeftMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                                 .scaleEffect(x: -1, y: 1)
                             
                             
@@ -134,5 +134,5 @@ struct MGSettingsView: View {
 }
 
 #Preview {
-    MGSettingsView(settingsVM: ArgosySettingsViewModel())
+    MGSettingsView(settingsVM: MGSettingsViewModel())
 }

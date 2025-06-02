@@ -2,24 +2,24 @@ import SwiftUI
 
 
 class MGShopViewModel: ObservableObject {
-    @Published var shopBgItems: [Item] = [
+    @Published var shopBgItems: [MGItem] = [
         
-        Item(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
-        Item(name: "bg2", image: "gameRealBg2MG", icon: "gameBg2MG", price: 100),
-        Item(name: "bg3", image: "gameRealBg3MG", icon: "gameBg3MG", price: 100),
-        Item(name: "bg4", image: "gameRealBg4MG", icon: "gameBg4MG", price: 100),
+        MGItem(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
+        MGItem(name: "bg2", image: "gameRealBg2MG", icon: "gameBg2MG", price: 100),
+        MGItem(name: "bg3", image: "gameRealBg3MG", icon: "gameBg3MG", price: 100),
+        MGItem(name: "bg4", image: "gameRealBg4MG", icon: "gameBg4MG", price: 100),
         
     ]
     
-    @Published var boughtItems: [Item] = [
-        Item(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
+    @Published var boughtItems: [MGItem] = [
+        MGItem(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
     ] {
         didSet {
             saveBoughtItem()
         }
     }
     
-    @Published var currentBgItem: Item? {
+    @Published var currentBgItem: MGItem? {
         didSet {
             saveCurrentBg()
         }
@@ -44,7 +44,7 @@ class MGShopViewModel: ObservableObject {
     
     func loadCurrentBg() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsBgKey),
-           let loadedItem = try? JSONDecoder().decode(Item.self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode(MGItem.self, from: savedData) {
             currentBgItem = loadedItem
         } else {
             currentBgItem = shopBgItems[0]
@@ -61,7 +61,7 @@ class MGShopViewModel: ObservableObject {
     
     func loadBoughtItem() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsBoughtKey),
-           let loadedItem = try? JSONDecoder().decode([Item].self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode([MGItem].self, from: savedData) {
             boughtItems = loadedItem
         } else {
             print("No saved data found")
@@ -70,7 +70,7 @@ class MGShopViewModel: ObservableObject {
     
 }
 
-struct Item: Codable, Hashable {
+struct MGItem: Codable, Hashable {
     var id = UUID()
     var name: String
     var image: String

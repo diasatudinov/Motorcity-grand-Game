@@ -2,11 +2,10 @@ import SwiftUI
 
 struct MGShopView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = ArgosyUser.shared
-    @ObservedObject var viewModel: ArgosyShopViewModel
-
-   // let images = ["gameBg1MG", "gameBg2MG", "gameBg3MG", "gameBg4MG"]
-        @State private var currentIndex = 0
+    @StateObject var user = MGUser.shared
+    @ObservedObject var viewModel: MGShopViewModel
+    
+    @State private var currentIndex = 0
     var body: some View {
         ZStack {
             
@@ -21,18 +20,18 @@ struct MGShopView: View {
                                 Image(.backIconMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
-                            ArgosyCoinBg().opacity(0)
+                            MGCoinBg().opacity(0)
                         }
                         Spacer()
                         Image(.shopTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
                         Spacer()
-                        ArgosyCoinBg()
+                        MGCoinBg()
                     }.padding([.top])
                 }
                 
@@ -47,7 +46,7 @@ struct MGShopView: View {
                         Image(.arrowLeftMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:60)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:60)
                     }
                     
                     Spacer()
@@ -116,7 +115,7 @@ struct MGShopView: View {
                                         }
                                     }
                                 }
-                            }.frame(width: i == 1 ? 250 : 150, height: i == 1 ? 250 : 150)
+                            }.frame(width: i == 1 ? (MGDeviceManager.shared.deviceType == .pad ? 400:250) : (MGDeviceManager.shared.deviceType == .pad ? 300:150), height: i == 1 ? (MGDeviceManager.shared.deviceType == .pad ? 400:250) : (MGDeviceManager.shared.deviceType == .pad ? 300:150))
                         }
                     }
                     
@@ -130,7 +129,7 @@ struct MGShopView: View {
                         Image(.arrowLeftMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:60)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:60)
                             .scaleEffect(x: -1, y: 1)
                     }
                 }
@@ -149,5 +148,5 @@ struct MGShopView: View {
 }
 
 #Preview {
-    MGShopView(viewModel: ArgosyShopViewModel())
+    MGShopView(viewModel: MGShopViewModel())
 }

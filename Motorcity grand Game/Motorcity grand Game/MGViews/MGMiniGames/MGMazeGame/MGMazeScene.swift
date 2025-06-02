@@ -102,7 +102,7 @@ class MGMazeScene: SKScene {
 
         let startRow = 1, startCol = 1
         let pos = positionForCell(row: startRow, col: startCol)
-        let texture = SKTexture(imageNamed: "redSquareArgosy")
+        let texture = SKTexture(imageNamed: "redSquareMG")
         player = SKSpriteNode(texture: texture, size: tileSize)
         player.position = pos
         addChild(player)
@@ -115,7 +115,7 @@ class MGMazeScene: SKScene {
         for r in 0..<gridRows {
             for c in 0..<gridCols where maze[r][c] == 2 {
                 let pos = positionForCell(row: r, col: c)
-                let texture = SKTexture(imageNamed: "blueSquareArgosy")
+                let texture = SKTexture(imageNamed: "blueSquareMG")
                 exitNode = SKSpriteNode(texture: texture, size: tileSize)
                 exitNode.position = pos
                 addChild(exitNode)
