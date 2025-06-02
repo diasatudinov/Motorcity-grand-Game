@@ -1,7 +1,7 @@
 import SpriteKit
 import UIKit
 
-class ArgosyMazeScene: SKScene {
+class MGMazeScene: SKScene {
 
     private var maze: [[Int]] = []
     private let rows = 15

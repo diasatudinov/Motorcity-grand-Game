@@ -2,8 +2,8 @@ import SwiftUI
 import SpriteKit
 
 
-struct ArgosySpriteViewContainer: UIViewRepresentable {
-    @StateObject var user = ArgosyUser.shared
+struct MGSpriteViewContainer: UIViewRepresentable {
+    @StateObject var user = MGUser.shared
     var scene: GameScene
     @Binding var winner: String?
     @Binding var sendPercent: CGFloat

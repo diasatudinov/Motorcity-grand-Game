@@ -18,7 +18,7 @@ import SwiftUI
     ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 3)
 }
 
-class GameScene: SKScene {
+class MGGameScene: SKScene {
     var victoryHandler: ((String) -> Void)?
     var sendPercent: CGFloat?
     var levelIndex: Int?
@@ -50,7 +50,7 @@ class GameScene: SKScene {
             case 0:
                 let textures = (0..<9).map { SKTexture(imageNamed: "mask\(index)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 780, y: 310),
                         CGPoint(x: 390, y: 255),
@@ -92,7 +92,7 @@ class GameScene: SKScene {
             case 1:
                 let textures = (0..<9).map { SKTexture(imageNamed: "mask\(index)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 650, y: 210),
                         CGPoint(x: 743, y: 209),
@@ -134,7 +134,7 @@ class GameScene: SKScene {
             case 2:
                 let textures = (0..<7).map { SKTexture(imageNamed: "mask\(index)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 600, y: 320),
                         CGPoint(x: 561, y: 424),
@@ -174,7 +174,7 @@ class GameScene: SKScene {
             case 3:
                 let textures = (0..<5).map { SKTexture(imageNamed: "mask\(index)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 750, y: 320),
                         CGPoint(x: 715, y: 468),
@@ -212,7 +212,7 @@ class GameScene: SKScene {
             case 4:
                 let textures = (0..<9).map { SKTexture(imageNamed: "mask\(1)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 650, y: 210),
                         CGPoint(x: 743, y: 209),
@@ -254,7 +254,7 @@ class GameScene: SKScene {
                 
                 let textures = (0..<5).map { SKTexture(imageNamed: "mask\(3)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 750, y: 320),
                         CGPoint(x: 715, y: 468),
@@ -293,7 +293,7 @@ class GameScene: SKScene {
                 
                 let textures = (0..<9).map { SKTexture(imageNamed: "mask\(1)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 650, y: 210),
                         CGPoint(x: 743, y: 209),
@@ -337,7 +337,7 @@ class GameScene: SKScene {
                 
                 let textures = (0..<9).map { SKTexture(imageNamed: "mask\(0)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 780, y: 310),
                         CGPoint(x: 390, y: 255),
@@ -380,7 +380,7 @@ class GameScene: SKScene {
                 
                 let textures = (0..<5).map { SKTexture(imageNamed: "mask\(3)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 750, y: 320),
                         CGPoint(x: 715, y: 468),
@@ -418,7 +418,7 @@ class GameScene: SKScene {
                 
                 let textures = (0..<5).map { SKTexture(imageNamed: "mask\(3)\($0)") }
                 
-                if ArgosyDeviceManager.shared.deviceType == .pad {
+                if MGDeviceManager.shared.deviceType == .pad {
                     positions = [
                         CGPoint(x: 750, y: 320),
                         CGPoint(x: 715, y: 468),
@@ -607,7 +607,7 @@ class TerritoryNode: SKNode {
         self.position = position
 
         shape.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        shape.setScale(ArgosyDeviceManager.shared.deviceType == .pad ? 1:0.5)
+        shape.setScale(MGDeviceManager.shared.deviceType == .pad ? 1:0.5)
         shape.zPosition = 0
         addChild(shape)
 
@@ -635,7 +635,7 @@ class TerritoryNode: SKNode {
     }
 
     func setHighlight(_ on: Bool) {
-        if ArgosyDeviceManager.shared.deviceType == .pad {
+        if MGDeviceManager.shared.deviceType == .pad {
             shape.run(.scale(to: on ? 1.1 : 1, duration: 0.1))
         } else {
             shape.run(.scale(to: on ? 0.6 : 0.5, duration: 0.1))

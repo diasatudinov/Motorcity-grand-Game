@@ -1,7 +1,7 @@
 import SwiftUI
 import SpriteKit
 
-struct ArgosyMazeGameView: View {
+struct MGMazeGameView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var isWin = false
     @State private var gameScene: ArgosyMazeScene = {
@@ -24,7 +24,7 @@ struct ArgosyMazeGameView: View {
                         Image(.mazeTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:91)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:91)
                     }
                     
                     HStack(alignment: .top) {
@@ -35,12 +35,12 @@ struct ArgosyMazeGameView: View {
                             Image(.backIconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         Spacer()
                         
-                        ArgosyCoinBg()
+                        MGCoinBg()
                         
                     }.padding([.top])
                     
@@ -53,7 +53,7 @@ struct ArgosyMazeGameView: View {
                             Image(.numBgMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:150)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:150)
                             
                             Text("Tries: 1")
                                 .font(.system(size: 23, weight: .semibold))
@@ -67,7 +67,7 @@ struct ArgosyMazeGameView: View {
                             Image(.restartBtnMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                         }
                     }
                     Spacer()
@@ -80,16 +80,16 @@ struct ArgosyMazeGameView: View {
                         Image(.controlArrowMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                     }
-                    HStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50) {
+                    HStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 100:50) {
                         Button {
                             gameScene.moveLeft()
                         } label: {
                             Image(.controlArrowMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                                 .rotationEffect(.degrees(90))
                                 .scaleEffect(x: -1, y: 1)
                         }
@@ -100,7 +100,7 @@ struct ArgosyMazeGameView: View {
                             Image(.controlArrowMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                                 .rotationEffect(.degrees(90))
                         }
                     }
@@ -111,7 +111,7 @@ struct ArgosyMazeGameView: View {
                         Image(.controlArrowMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 130:65)
                             .scaleEffect(x: 1, y: -1)
                     }
                     Spacer()
@@ -128,25 +128,25 @@ struct ArgosyMazeGameView: View {
                         Image(.wayFoundTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
                     
                         
                         Image(.winTwentyMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                         
                         Spacer()
                         
                         Button {
                             presentationMode.wrappedValue.dismiss()
-                            ArgosyUser.shared.updateUserMoney(for: 20)
+                            MGUser.shared.updateUserMoney(for: 20)
 
                         } label: {
                             Image(.takeTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                         }
                     }
                 }
@@ -164,5 +164,5 @@ struct ArgosyMazeGameView: View {
 }
 
 #Preview {
-    ArgosyMazeGameView()
+    MGMazeGameView()
 }

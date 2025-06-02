@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-class ArgosyShopViewModel: ObservableObject {
+class MGShopViewModel: ObservableObject {
     @Published var shopBgItems: [Item] = [
         
         Item(name: "bg1", image: "gameRealBg1MG", icon: "gameBg1MG", price: 100),
