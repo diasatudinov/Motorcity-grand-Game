@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MGCoinBg: View {
-    @StateObject var user = ArgosyUser.shared
+    @StateObject var user = MGUser.shared
     var body: some View {
         ZStack {
             Image(.coinsBgMG)
@@ -9,14 +9,14 @@ struct MGCoinBg: View {
                 .scaledToFit()
             
             Text("\(user.money)")
-                .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 42:21, weight: .semibold))
+                .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 42:21, weight: .semibold))
                 .foregroundStyle(.yellow)
                 .textCase(.uppercase)
                 .offset(x: 20)
             
             
             
-        }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+        }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
         
     }
 }

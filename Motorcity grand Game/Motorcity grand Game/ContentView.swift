@@ -4,8 +4,8 @@ import SpriteKit
 struct ContentView: View {
     @State private var winner: String? = nil
     @State private var sendPercentage: CGFloat = 1.0
-    var scene: GameScene {
-        let scene = GameScene()
+    var scene: MGGameScene {
+        let scene = MGGameScene()
         scene.victoryHandler = { name in
             DispatchQueue.main.async {
                 self.winner = name
