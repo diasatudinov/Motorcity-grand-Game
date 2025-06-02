@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MGGuessNumberView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = ArgosyUser.shared
+    @StateObject var user = MGUser.shared
     @State private var target = Int.random(in: 100...999)
     @State private var guessDigits: [String] = []
     @State private var feedback: String = ""
@@ -17,7 +17,7 @@ struct MGGuessNumberView: View {
         var body: some View {
             ZStack {
                 if Int(guessDigits.joined()) ?? 0 != target {
-                    VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 40:20) {
+                    VStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 40:20) {
                         Spacer()
                         
                         ZStack {
@@ -37,15 +37,15 @@ struct MGGuessNumberView: View {
                                                 Text(idx < guessDigits.count ? guessDigits[idx] : "" )
                                                     .font(.system(size: 36, weight: .bold))
                                                     .foregroundColor(.white)
-                                            }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 40:20, height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:83)
+                                            }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 40:20, height: MGDeviceManager.shared.deviceType == .pad ? 150:83)
                                         }
                                     }
                                     
                                     
-                                }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:255)
+                                }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:255)
                                 
                                 let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
-                                HStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 12:12) {
+                                HStack(spacing: MGDeviceManager.shared.deviceType == .pad ? 12:12) {
                                     ForEach(padNumbers, id: \ .self) { num in
                                         Button(action: { numberPressed(num) }) {
                                             ZStack {
@@ -53,13 +53,13 @@ struct MGGuessNumberView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                 Text("\(num)")
-                                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 50:36, weight: .bold))
+                                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 50:36, weight: .bold))
                                                     .foregroundColor(.yellow)
-                                            }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 100:72, height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:72)
+                                            }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 100:72, height: MGDeviceManager.shared.deviceType == .pad ? 100:72)
                                         }
                                         .disabled(guessDigits.count >= 3)
                                     }
-                                }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 480:200)
+                                }.frame(width: MGDeviceManager.shared.deviceType == .pad ? 480:200)
                                     .padding(.horizontal)
                             }
                         }.padding()
@@ -81,12 +81,12 @@ struct MGGuessNumberView: View {
                             Image(.biggerTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:125)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
                         } else if Int(guessDigits.joined()) ?? 0 > target {
                             Image(.smallerTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:125)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
                         } else {
                             ZStack {
                                 VStack(spacing: -10) {
@@ -94,7 +94,7 @@ struct MGGuessNumberView: View {
                                     Image(.guessTheNumTextMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
                                     
                                     ZStack {
                                         
@@ -107,12 +107,12 @@ struct MGGuessNumberView: View {
                                             .foregroundStyle(.green)
                                         
                                         
-                                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200)
+                                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
                                     
                                     Image(.winTwentyMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                     
                                     Button {
                                         resetGame()
@@ -121,7 +121,7 @@ struct MGGuessNumberView: View {
                                         Image(.takeTextMG)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                     }
                                 }
                             }
@@ -136,7 +136,7 @@ struct MGGuessNumberView: View {
                             Image(.guessTheNumTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
                         }
                         
                         HStack(alignment: .top) {
@@ -147,12 +147,12 @@ struct MGGuessNumberView: View {
                                 Image(.backIconMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
                             Spacer()
                             
-                            ArgosyCoinBg()
+                            MGCoinBg()
                         }.padding([.horizontal, .top])
                         
                     }
@@ -186,7 +186,7 @@ struct MGGuessNumberView: View {
             feedback = "Too high!"
         } else {
             feedback = "You got it in \(attempts) tries!"
-            ArgosyUser.shared.updateUserMoney(for: 100)
+            MGUser.shared.updateUserMoney(for: 100)
         }
         if feedback.starts(with: "You got it") {
         } else {

@@ -3,10 +3,10 @@ import SwiftUI
 struct MGMatchTheCardView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject var user = ArgosyUser.shared
+    @StateObject var user = MGUser.shared
     
-    @State private var cards: [ArgosyCard] = []
-    @State private var selectedCards: [ArgosyCard] = []
+    @State private var cards: [MGCard] = []
+    @State private var selectedCards: [MGCard] = []
     @State private var message: String = "Find all matching cards!"
     @State private var gameEnded: Bool = false
     @State private var isWin: Bool = false
@@ -35,22 +35,22 @@ struct MGMatchTheCardView: View {
                             Image(.numBgMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                                 .opacity(0)
                             
                             Image(.findCoupleTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:91)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:91)
                             
                             ZStack {
                                 Image(.numBgMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                                 
                                 Text("\(timeLeft)")
-                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 40:20, weight: .bold))
+                                    .font(.system(size: MGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .bold))
                                     .foregroundStyle(.white)
                             }
                         }
@@ -63,12 +63,12 @@ struct MGMatchTheCardView: View {
                                 Image(.backIconMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
                             Spacer()
                             
-                            ArgosyCoinBg()
+                            MGCoinBg()
                         }.padding(.horizontal)
                     }
                     
@@ -78,7 +78,7 @@ struct MGMatchTheCardView: View {
                         
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 6), spacing: 0) {
                             ForEach(cards) { card in
-                                ArgosyCardView(card: card)
+                                MGCardView(card: card)
                                     .onTapGesture {
                                         flipCard(card)
                                         
@@ -102,17 +102,17 @@ struct MGMatchTheCardView: View {
                             Image(.allMatchesTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:125)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
                             
                             Image(.allMatchesImageMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:125)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
                             
                             Image(.winTwentyMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                             Spacer()
                             Button {
                                 setupGame()
@@ -120,7 +120,7 @@ struct MGMatchTheCardView: View {
                                 Image(.takeTextMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
@@ -132,7 +132,7 @@ struct MGMatchTheCardView: View {
                                 Image(.youLoseTextMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 240:120)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 240:120)
                                 
                                 Button {
                                     setupGame()
@@ -140,14 +140,14 @@ struct MGMatchTheCardView: View {
                                     Image(.retreTextMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                                 }
                             }
                             
                             Image(.man2ImageMG)
                                 .resizable()
                                 .scaledToFit()
-                                //.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250)
+                                
                             
                         }
                     }.ignoresSafeArea()
@@ -166,9 +166,7 @@ struct MGMatchTheCardView: View {
                 timer.upstream.connect().cancel()
             }
         }
-        //        .onAppear {
-        //            startTimer()
-        //        }
+       
         .background(
             Image(.appBgMG)
                 .resizable()
@@ -198,12 +196,12 @@ struct MGMatchTheCardView: View {
         // Restart timer
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         // Generate cards
-        var gameCards = [ArgosyCard]()
+        var gameCards = [MGCard]()
         
         // Add 4 cards of each type (24 cards total for 6 types)
         for type in cardTypes {
-            gameCards.append(ArgosyCard(type: type))
-            gameCards.append(ArgosyCard(type: type))
+            gameCards.append(MGCard(type: type))
+            gameCards.append(MGCard(type: type))
         }
         
         // Shuffle cards
@@ -213,7 +211,7 @@ struct MGMatchTheCardView: View {
         cards = Array(gameCards.prefix(gridSize * gridSize))
     }
     
-    private func flipCard(_ card: ArgosyCard) {
+    private func flipCard(_ card: MGCard) {
         guard let index = cards.firstIndex(where: { $0.id == card.id }),
               !cards[index].isFaceUp,
               !cards[index].isMatched,
@@ -283,8 +281,8 @@ struct MGMatchTheCardView: View {
     MGMatchTheCardView()
 }
 
-struct ArgosyCardView: View {
-    let card: ArgosyCard
+struct MGCardView: View {
+    let card: MGCard
     
     var body: some View {
         ZStack {
@@ -292,19 +290,19 @@ struct ArgosyCardView: View {
                 Image(card.type)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:91)
+                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:91)
             } else {
                 Image(.cardBackMG)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:91)
+                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:91)
             }
         }
     }
 }
 
 
-struct ArgosyCard: Identifiable {
+struct MGCard: Identifiable {
     let id = UUID()
     let type: String
     var isFaceUp = false

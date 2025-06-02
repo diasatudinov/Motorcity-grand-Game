@@ -1,11 +1,3 @@
-//
-//  ArgosyRoot.swift
-//  Motorcity grand Game
-//
-//  Created by Dias Atudinov on 30.05.2025.
-//
-
-
 import SwiftUI
 
 struct MGRoot: View {

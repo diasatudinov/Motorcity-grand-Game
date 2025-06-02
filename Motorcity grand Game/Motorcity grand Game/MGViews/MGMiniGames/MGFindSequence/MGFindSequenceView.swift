@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MGFindSequenceView: View {
-    @StateObject var user = ArgosyUser.shared
+    @StateObject var user = MGUser.shared
     @Environment(\.presentationMode) var presentationMode
     
     let cardImages = [
@@ -41,13 +41,13 @@ struct MGFindSequenceView: View {
                                     Image(.backIconMG)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                                 }
                                 
                             }
                             Spacer()
                             
-                            ArgosyCoinBg()
+                            MGCoinBg()
                         }.padding([.horizontal, .top])
                     }
                 }
@@ -55,7 +55,7 @@ struct MGFindSequenceView: View {
                 Image(.findSequenceGameTextMG)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                 
                 Spacer()
                 
@@ -63,7 +63,7 @@ struct MGFindSequenceView: View {
                     // Full-screen reveal of each card in sequence
                     if let idx = currentStep {
                         MemorizationCardView(imageName: cardImages[idx])
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 340:170)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 340:170)
                             .padding()
                             .transition(.opacity)
                     }
@@ -93,12 +93,12 @@ struct MGFindSequenceView: View {
                             Image(.sequebceCorrectTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:125)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
                             
                             Image(.winTwentyMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                             
                             Spacer()
                             Button {
@@ -107,7 +107,7 @@ struct MGFindSequenceView: View {
                                 Image(.takeTextMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
@@ -117,7 +117,7 @@ struct MGFindSequenceView: View {
                             Image(.sequebceWrongTextMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:125)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 250:125)
                             
                             Spacer()
                             
@@ -127,7 +127,7 @@ struct MGFindSequenceView: View {
                                 Image(.retreTextMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }

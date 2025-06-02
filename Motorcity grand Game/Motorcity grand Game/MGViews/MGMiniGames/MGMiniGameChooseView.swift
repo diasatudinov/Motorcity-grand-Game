@@ -18,11 +18,11 @@ struct MGMiniGameChooseView: View {
                             Image(.backIconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                         
-                        ArgosyCoinBg()
+                        MGCoinBg()
                     }.padding([.horizontal, .top])
                     
                 }
@@ -38,7 +38,7 @@ struct MGMiniGameChooseView: View {
                             Image(.game1IconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
                         }
                         
@@ -48,7 +48,7 @@ struct MGMiniGameChooseView: View {
                             Image(.game2IconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
                         }
                     }
@@ -60,7 +60,7 @@ struct MGMiniGameChooseView: View {
                             Image(.game3IconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
                         }
                         
@@ -70,7 +70,7 @@ struct MGMiniGameChooseView: View {
                             Image(.game4IconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 180:90)
                             
                         }
                     }
@@ -94,7 +94,7 @@ struct MGMiniGameChooseView: View {
             MGFindSequenceView()
         }
         .fullScreenCover(isPresented: $game3) {
-            ArgosyMazeGameView()
+            MGMazeGameView()
         }
         .fullScreenCover(isPresented: $game4) {
             MGMatchTheCardView()

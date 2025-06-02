@@ -9,9 +9,9 @@ struct MGMainMenu: View {
     @State private var showCalendar = false
 
     
-    @StateObject var achievementVM = ArgosyAchievementsViewModel()
-    @StateObject var settingsVM = ArgosySettingsViewModel()
-    @StateObject var shopVM = ArgosyShopViewModel()
+    @StateObject var achievementVM = MGAchievementsViewModel()
+    @StateObject var settingsVM = MGSettingsViewModel()
+    @StateObject var shopVM = MGShopViewModel()
     
     var body: some View {
         
@@ -29,7 +29,7 @@ struct MGMainMenu: View {
             
             VStack(spacing: 0) {
                 HStack(alignment: .center) {
-                    ArgosyCoinBg()
+                    MGCoinBg()
                         .opacity(0)
                     
                     Spacer()
@@ -37,7 +37,7 @@ struct MGMainMenu: View {
                     Image(.loadingLogoMG)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)
+                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 200:100)
                     Spacer()
                     
                     VStack {
@@ -48,10 +48,10 @@ struct MGMainMenu: View {
                             Image(.settingsIconMG)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 178:89)
+                                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:89)
                         }
                         
-                        ArgosyCoinBg()
+                        MGCoinBg()
                     }
                     
                 }
@@ -62,7 +62,7 @@ struct MGMainMenu: View {
                     Image(.playIconMG)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 240:126)
+                        .frame(height: MGDeviceManager.shared.deviceType == .pad ? 240:126)
                 }
                 HStack {
                     
@@ -72,7 +72,7 @@ struct MGMainMenu: View {
                         Image(.miniGamesIconMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 178:89)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:89)
                     }
                     
                     Button {
@@ -81,7 +81,7 @@ struct MGMainMenu: View {
                         Image(.shopIconMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 178:89)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:89)
                     }
                     
                     Button {
@@ -90,7 +90,7 @@ struct MGMainMenu: View {
                         Image(.achievementsIconMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 178:89)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:89)
                     }
                     
                     Button {
@@ -99,7 +99,7 @@ struct MGMainMenu: View {
                         Image(.calendarIconMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 178:89)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 178:89)
                     }
                     
                     
