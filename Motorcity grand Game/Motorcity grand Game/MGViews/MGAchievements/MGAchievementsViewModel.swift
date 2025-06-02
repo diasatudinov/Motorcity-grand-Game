@@ -2,12 +2,12 @@ import SwiftUI
 
 class MGAchievementsViewModel: ObservableObject {
     
-    @Published var achievements: [AchievementSG] = [
-        AchievementSG(image: "achieve1ImageMG", isAchieved: false),
-        AchievementSG(image: "achieve2ImageMG", isAchieved: false),
-        AchievementSG(image: "achieve3ImageMG", isAchieved: false),
-        AchievementSG(image: "achieve4ImageMG", isAchieved: false),
-        AchievementSG(image: "achieve5ImageMG", isAchieved: false)
+    @Published var achievements: [MGAchievement] = [
+        MGAchievement(image: "achieve1ImageMG", isAchieved: false),
+        MGAchievement(image: "achieve2ImageMG", isAchieved: false),
+        MGAchievement(image: "achieve3ImageMG", isAchieved: false),
+        MGAchievement(image: "achieve4ImageMG", isAchieved: false),
+        MGAchievement(image: "achieve5ImageMG", isAchieved: false)
 
     ] {
         didSet {
@@ -20,9 +20,9 @@ class MGAchievementsViewModel: ObservableObject {
         
     }
     
-    private let userDefaultsAchievementsKey = "achievementsKeySG"
+    private let userDefaultsAchievementsKey = "achievementsKeyMG"
     
-    func achieveToggle(_ achive: AchievementSG) {
+    func achieveToggle(_ achive: MGAchievement) {
         guard let index = achievements.firstIndex(where: { $0.id == achive.id })
         else {
             return
@@ -41,7 +41,7 @@ class MGAchievementsViewModel: ObservableObject {
     
     func loadAchievementsItem() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsAchievementsKey),
-           let loadedItem = try? JSONDecoder().decode([AchievementSG].self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode([MGAchievement].self, from: savedData) {
             achievements = loadedItem
         } else {
             print("No saved data found")
@@ -49,7 +49,7 @@ class MGAchievementsViewModel: ObservableObject {
     }
 }
 
-struct AchievementSG: Codable, Hashable, Identifiable {
+struct MGAchievement: Codable, Hashable, Identifiable {
     var id = UUID()
     var image: String
     var isAchieved: Bool

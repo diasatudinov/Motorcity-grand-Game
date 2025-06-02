@@ -1,11 +1,3 @@
-//
-//  ArgosyWV.swift
-//  Motorcity grand Game
-//
-//  Created by Dias Atudinov on 30.05.2025.
-//
-
-
 import SwiftUI
 import WebKit
 
@@ -60,7 +52,7 @@ struct MGWV: UIViewRepresentable {
     }
 }
 
-struct ArgosyWVWrap: View {
+struct MGWVWrap: View {
     @State private var nAllow = true
     var urlString = ""
     @AppStorage("firstOpen") var firstOpen = true

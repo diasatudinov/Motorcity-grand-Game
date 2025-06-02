@@ -17,20 +17,20 @@ struct MGDailyTaskView: View {
                                 Image(.backIconMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
-                            ArgosyCoinBg().opacity(0)
+                            MGCoinBg().opacity(0)
                         }
                         
                         Spacer()
                         Image(.dailyTaskTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:120)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:120)
                         Spacer()
                         
-                        ArgosyCoinBg()
+                        MGCoinBg()
                     }.padding(.top)
                 }
                 
@@ -52,11 +52,11 @@ struct MGDailyTaskView: View {
                                 Image(.priceFiftyMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 110:55)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 110:55)
                             }
                         }
                         
-                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                     
                     ZStack {
                         Image(.task2ImageMG)
@@ -72,11 +72,11 @@ struct MGDailyTaskView: View {
                                 Image(.priceFiftyMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 110:55)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 110:55)
                             }
                         }
                         
-                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                     
                     ZStack {
                         Image(.task3ImageMG)
@@ -92,11 +92,11 @@ struct MGDailyTaskView: View {
                                 Image(.priceFiftyMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 110:55)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 110:55)
                             }
                         }
                         
-                    }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:250)
+                    }.frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:250)
                 }.offset(y: -25)
                 
                 Spacer()

@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct MGAchievementsView: View {
-    @StateObject var user = ArgosyUser.shared
+    @StateObject var user = MGUser.shared
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: ArgosyAchievementsViewModel
+    @ObservedObject var viewModel: MGAchievementsViewModel
     var body: some View {
         ZStack {
             
@@ -19,18 +19,18 @@ struct MGAchievementsView: View {
                                 Image(.backIconMG)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
-                            ArgosyCoinBg().opacity(0)
+                            MGCoinBg().opacity(0)
                         }
                         Spacer()
                         Image(.archieveTextMG)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
+                            .frame(height: MGDeviceManager.shared.deviceType == .pad ? 210:105)
                         Spacer()
-                        ArgosyCoinBg()
+                        MGCoinBg()
                     }.padding([.top])
                 }
                 
@@ -55,12 +55,12 @@ struct MGAchievementsView: View {
         )
     }
     
-    @ViewBuilder func achievementItem(item: AchievementSG) -> some View {
+    @ViewBuilder func achievementItem(item: MGAchievement) -> some View {
         VStack(spacing: 0) {
             Image(item.image)
                 .resizable()
                 .scaledToFit()
-                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200)
+                .frame(height: MGDeviceManager.shared.deviceType == .pad ? 400:200)
                 .opacity(item.isAchieved ? 1:0.5)
             
             Button {
@@ -73,7 +73,7 @@ struct MGAchievementsView: View {
                 Image(.priceHundredMG)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
+                    .frame(height: MGDeviceManager.shared.deviceType == .pad ? 100:50)
             }
         }
     }
@@ -82,5 +82,5 @@ struct MGAchievementsView: View {
 
 
 #Preview {
-    MGAchievementsView(viewModel: ArgosyAchievementsViewModel())
+    MGAchievementsView(viewModel: MGAchievementsViewModel())
 }
